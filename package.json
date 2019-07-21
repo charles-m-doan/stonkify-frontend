@@ -1,0 +1,31 @@
+{
+	"name": "stonkify-frontend",
+	"version": "1.0.0",
+	"description": "This is the front-end web application for Stonkify.  It is a Node.js project designed to interface with the Stonkify backend Spring Boot API.\u001b[A\u001b[C\u001b[C\u001b[C\u001b[3~\u001b[C\u001b\u001b[3~\u001b[3~",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest ./test --colors --coverage --watch",
+		"dev": "parcel ./src/index.html",
+		"build": "parcel build ./src/index.html"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/charles-m-doan/stonkify-frontend.git"
+	},
+	"keywords": [
+		"Stonks"
+	],
+	"author": "Kai Hennacy, Isaac Canonico, Charles Doan, Tyler Conner",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/charles-m-doan/stonkify-frontend/issues"
+	},
+	"homepage": "https://github.com/charles-m-doan/stonkify-frontend#readme",
+	"devDependencies": {
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"babel-jest": "^24.8.0",
+		"jest": "^24.8.0",
+		"parcel-bundler": "^1.12.3"
+	}
+}
