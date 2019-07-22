@@ -1,12 +1,12 @@
 import Html from "../Html/Html";
-import Api from "../Api/Api";
+// import Api from "../Api/Api";
 import logoAvatar from "../../images/memeMan.png";
 
 export default function() {
-  return new Components();
+  return new GeneralComponents();
 }
 
-class Components {
+class GeneralComponents {
   getAppContext() {
     return Html().select("#app");
   }
@@ -101,12 +101,6 @@ class Components {
     wrapper.addChild(banner);
 
     app.addChild(wrapper);
-  }
-
-  renderSkeletonView() {
-    const app = Html().select("#app");
-    this.renderSideBar();
-    this.renderContentPane();
   }
 
   renderContentPane() {
