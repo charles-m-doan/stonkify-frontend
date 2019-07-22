@@ -1,0 +1,46 @@
+.play-circle {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background-color: var(--darkerer);
+	margin-right: 1rem;
+}
+
+.play-circle:hover {
+	background-color: var(--text-default);
+}
+
+.play-button {
+	position: relative;
+	left: 16px;
+	top: 9px;
+	padding-left: 20px;
+	outline: none;
+	background-color: transparent;
+	border-width: 15px 0px 15px 25px;
+	border-color: transparent transparent transparent var(--emphasis);
+}
+
+.results-container {
+	margin-bottom: 40px;
+}
+
+.results-container div:hover {
+	background-color: var(--darkerer);
+}
+
+.song-box {
+	background-color: var(--darker);
+	min-width: 40vw;
+	margin: 0.5rem 2rem;
+	padding: 0.5rem 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.song-info {
+	margin-right: 1rem;
+	text-align: left;
+	flex-grow: 2;
+}
