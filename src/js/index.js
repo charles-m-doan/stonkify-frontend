@@ -1,1 +1,3 @@
-console.log("Hello World");
+import Components from "./Components/Components";
+
+Components().renderSkeletonView();
