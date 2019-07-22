@@ -1,5 +1,6 @@
 import Html from "../Html/Html";
 import Api from "../Api/Api";
+import logoAvatar from "../../images/memeMan.png";
 
 export default function() {
   return new Components();
@@ -28,8 +29,13 @@ class Components {
       .addClass("banner__logo__image");
     const figureImg = Html()
       .create("img")
-      .addAttribute("src", "./images/memeMan.png")
+      .addAttribute("src", logoAvatar)
       .addAttribute("alt", "Meme Man");
+
+    const bannerLogoTitle = Html()
+      .create("h1")
+      .addClass("banner__logo__title")
+      .text("Stonkify");
 
     const bannerNavList = Html()
       .create("ul")
@@ -84,6 +90,7 @@ class Components {
     bannerLogo.addChild(bannerLogoFigure);
 
     banner.addChild(bannerLogo);
+    banner.addChild(bannerLogoTitle);
 
     bannerNavList.addChild(homeViewItem);
     bannerNavList.addChild(searchViewItem);
