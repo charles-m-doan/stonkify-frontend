@@ -1,19 +1,19 @@
-import GeneralComponents from "./GeneralComponents";
+import CommonComponents from "./CommonComponents";
 import Html from "../Html/Html";
 import Api from "../Api/Api";
 
 export default function() {
-	return new SingleArtistViewComponents();
+  return new SingleArtistViewComponents();
 }
 
 class SingleArtistViewComponents {
-	renderSingleArtistView() {
-		const app = GeneralComponents().getAppContext();
-		GeneralComponents().renderSideBar();
-		this.renderContentPane();
-	}
+  renderSingleArtistView() {
+    CommonComponents().createPageSkeleton();
+    this.renderMainContent();
+  }
 
-	renderContentPane() {
-		// GeneralComponents().renderContentPane();
-	}
+  renderMainContent() {
+    const main = CommonComponents().getMainContentBlock();
+    console.log(main);
+  }
 }
