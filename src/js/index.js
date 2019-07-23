@@ -1,4 +1,3 @@
-import GeneralComponents from "./Components/GeneralComponents";
 import SkeletonViewComponents from "./Components/SkeletonViewComponents";
 import AlbumsViewComponents from "./Components/AlbumsViewComponents";
 import ArtistsViewComponents from "./Components/ArtistsViewComponents";
@@ -17,3 +16,5 @@ SkeletonViewComponents().renderSkeletonView();
 // SingleArtistViewComponents().renderSingleArtistView();
 
 // SearchViewComponents().renderSearchView();
+
+// DOMExperiments.renderView();
