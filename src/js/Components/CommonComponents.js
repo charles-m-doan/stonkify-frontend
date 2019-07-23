@@ -1,22 +1,39 @@
 import Html from "../Html/Html";
-import Api from "../Api/Api";
 import logoAvatar from "../../images/memeMan.png";
 
 export default function() {
-	return new GeneralComponents();
+	return new CommonComponents();
 }
 
-class GeneralComponents {
+class CommonComponents {
 	getAppContext() {
 		return Html().select("#app");
 	}
 
-	renderSideBar() {
-		const app = Html().select("#app");
+	getMainContentBlock() {
+		const mainContentBlock = Html().select(".main");
+		return mainContentBlock;
+	}
 
+	createPageSkeleton() {
+		this.createWrapper();
+		this.createSidebar();
+		this.createContentPane();
+		this.createMain();
+		this.createFooter();
+	}
+
+	createWrapper() {
+		const app = Html().select("#app");
 		const wrapper = Html()
 			.create("div")
 			.addClass("wrapper");
+		app.addChild(wrapper);
+	}
+
+	createSidebar() {
+		const wrapper = Html().select(".wrapper");
+
 		const banner = Html()
 			.create("section")
 			.addClass("banner")
@@ -99,21 +116,28 @@ class GeneralComponents {
 		banner.addChild(bannerNavList);
 
 		wrapper.addChild(banner);
-
-		app.addChild(wrapper);
 	}
 
-	renderContentPane() {
+	createContentPane() {
 		const wrapper = Html().select(".wrapper");
-
 		const contentPane = Html()
 			.create("section")
 			.addClass("content");
+		wrapper.addChild(contentPane);
+	}
+
+	createMain() {
+		const contentPane = Html().select(".content");
 
 		const main = Html()
 			.create("main")
 			.addClass("main");
 
+		contentPane.addChild(main);
+	}
+
+	createFooter() {
+		const contentPane = Html().select(".content");
 		const footer = Html()
 			.create("footer")
 			.addClass("footer");
@@ -122,7 +146,6 @@ class GeneralComponents {
 			.html("&copy;2019 Stonkify Freemium");
 
 		footer.addChild(footerContents);
-		contentPane.addChild(main).addChild(footer);
-		wrapper.addChild(contentPane);
+		contentPane.addChild(footer);
 	}
 }

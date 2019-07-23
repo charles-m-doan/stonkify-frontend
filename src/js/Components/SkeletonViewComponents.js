@@ -1,16 +1,13 @@
-import GeneralComponents from "./GeneralComponents";
-import Html from "../Html/Html";
-import Api from "../Api/Api";
-import logoAvatar from "../../images/memeMan.png";
+import CommonComponents from "./CommonComponents";
 
 export default function() {
-  return new SkeletonViewComponents();
+	return new SkeletonViewComponents();
 }
 
 class SkeletonViewComponents {
-  renderSkeletonView() {
-    const app = GeneralComponents().getAppContext();
-    GeneralComponents().renderSideBar();
-    GeneralComponents().renderContentPane();
-  }
+	renderSkeletonView() {
+		CommonComponents().createPageSkeleton();
+		const main = CommonComponents().getMainContentBlock();
+		console.log(main);
+	}
 }
