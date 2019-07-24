@@ -16,4 +16,6 @@ class SingleArtistViewComponents {
     const main = CommonComponents().getMainContentBlock();
     console.log(main);
   }
+
+  
 }
