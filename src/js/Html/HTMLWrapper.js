@@ -1,3 +1,5 @@
+// This is an experimental class that I haven't gotten around to fleshing out. -Charles
+
 export default function(htmlElementType) {
 	return new HTMLWrapper(htmlElementType);
 }

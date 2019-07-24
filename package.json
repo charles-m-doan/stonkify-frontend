@@ -27,5 +27,8 @@
 		"babel-jest": "^24.8.0",
 		"jest": "^24.8.0",
 		"parcel-bundler": "^1.12.3"
+	},
+	"dependencies": {
+		"babel-polyfill": "^6.26.0"
 	}
 }

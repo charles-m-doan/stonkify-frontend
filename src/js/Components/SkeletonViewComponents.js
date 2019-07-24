@@ -7,7 +7,5 @@ export default function() {
 class SkeletonViewComponents {
 	renderSkeletonView() {
 		CommonComponents().createPageSkeleton();
-		const main = CommonComponents().getMainContentBlock();
-		console.log(main);
 	}
 }
