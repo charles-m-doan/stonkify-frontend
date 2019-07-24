@@ -3,6 +3,7 @@ import SingleArtistViewComponents from "./Components/SingleArtistViewComponents"
 import ArtistsViewComponents from "./Components/ArtistsViewComponents";
 import SingleAlbumViewComponents from "./Components/SingleAlbumViewComponents";
 import HomeViewComponents from "./Components/HomeViewComponents";
+import AlbumsViewComponents from "./Components/AlbumsViewComponents";
 
 import Api from "./Api/Api";
 
@@ -10,4 +11,5 @@ import Api from "./Api/Api";
 // SingleArtistViewComponents().renderSingleArtistView();
 // ArtistsViewComponents().renderArtistsView();
 // SingleAlbumViewComponents().renderSingleAlbumView();
-HomeViewComponents().renderHomeView();
+// HomeViewComponents().renderHomeView();
+AlbumsViewComponents().renderAlbumsView();
