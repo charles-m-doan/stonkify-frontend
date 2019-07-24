@@ -37,7 +37,8 @@
 }
 
 .avatar-figure__img-artist {
-	border-radius: 100%;
+	border-radius: 50%;
+	max-width: 300px;
 }
 
 .artist-view__nav {
