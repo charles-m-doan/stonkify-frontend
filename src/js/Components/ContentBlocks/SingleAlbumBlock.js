@@ -82,13 +82,15 @@ export default class SingleAlbumBlock {
   renderSongs() {
     const songSection = Html().create("section");
     Api().getRequest(this.resourceURL, album => {
-      console.log(album.songs);
+      //   console.log(album.songs);
       album.songs.forEach(song => {
         const songBox = Html()
           .create("div")
           .addClass("song-box");
         const playCircle = Html()
-          .create("div")
+          .create("a")
+          .addAttribute("href", song.linkUrl)
+          .addAttribute("target", "_blank")
           .addClass("play-circle");
         const playButton = Html()
           .create("button")
@@ -101,7 +103,7 @@ export default class SingleAlbumBlock {
           .text(song.title);
         const artistName = Html()
           .create("span")
-          .text("can't get artist name");
+          .text(song.parentArtistName);
         const songDuration = Html()
           .create("span")
           .addClass("duration")

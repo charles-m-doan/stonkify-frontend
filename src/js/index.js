@@ -13,4 +13,4 @@ console.log("Starting App!");
 let componentManager = new ComponentManager();
 componentManager.renderContentBlock("homeBlock", "");
 // componentManager.renderContentBlock("singleArtistBlock", "12");
-componentManager.renderContentBlock("singleAlbumBlock", "13");
+componentManager.renderContentBlock("singleAlbumBlock", "20");
