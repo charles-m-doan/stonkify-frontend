@@ -1,74 +1,79 @@
 import Html from "../../Html/Html";
 import Api from "../../Api/Api";
+import ComponentManager from "../ComponentManager";
 
 export default class AllAlbumsBlock {
-	constructor(requestedData) {
-		if (requestedData === undefined) {
-			requestedData = "";
-		}
-		this.rootDataURL = Api().getRootURL() + "albums";
-		this.resourceURL = this.rootDataURL + "/" + requestedData;
-		console.log(this.resourceURL);
-	}
+  constructor(requestedData) {
+    if (requestedData === undefined) {
+      requestedData = "";
+    }
+    this.rootDataURL = Api().getRootURL() + "albums";
+    this.resourceURL = this.rootDataURL + "/" + requestedData;
+    console.log(this.resourceURL);
+  }
 
-	renderContent(requestedData) {
-		const main = Html().select(".main");
-		const content = this.generateContent();
-		main.replace(content);
-	}
+  renderContent(requestedData) {
+    const main = Html().select(".main");
+    const content = this.generateContent();
+    main.replace(content);
+    console.log("FINISHED RENDERING CONTENT BLOCK");
+  }
 
-	generateContent() {
-		const pageTitle = Html()
-			.create("h1")
-			.addClass("page-title")
-			.text("Albums");
-		const albumGallery = this.generateAlbumGallery();
+  generateContent() {
+    const pageTitle = Html()
+      .create("h1")
+      .addClass("page-title")
+      .text("Albums");
+    const albumGallery = this.generateAlbumGallery();
 
-		const content = Html()
-			.create("div")
-			.addChild(pageTitle)
-			.addChild(albumGallery);
-		return content;
-	}
+    const content = Html()
+      .create("div")
+      .addChild(pageTitle)
+      .addChild(albumGallery);
+    return content;
+  }
 
-	generateAlbumGallery() {
-		const albumGallery = Html()
-			.create("section")
-			.addClass("card-gallery");
+  generateAlbumGallery() {
+    const albumGallery = Html()
+      .create("section")
+      .addClass("card-gallery");
 
-		Api().getRequest(this.resourceURL, albumCollection => {
-			albumCollection.forEach(album => {
-				const albumCard = Html()
-					.create("article")
-					.addClass("card");
-				const albumTitle = Html()
-					.create("h3")
-					.addClass("card__title")
-					.text(album.title);
-				const albumCover = Html()
-					.create("figure")
-					.addClass("album-card__cover-image");
-				const coverImg = Html()
-					.create("img")
-					.addAttribute("src", album.imgUrl);
-				const artistName = Html()
-					.create("h4")
-					.addClass("album-card__artist-name")
-					.text(album.parentName);
-				const releaseDate = Html()
-					.create("h4")
-					.addClass("album-card__date")
-					.text(album.publishYear);
+    Api().getRequest(this.resourceURL, albumCollection => {
+      albumCollection.forEach(album => {
+        const albumCard = Html()
+          .create("article")
+          .addClass("card")
+          .click(() => {
+            console.log("Album " + album.id + " clicked!");
+          });
+        const albumTitle = Html()
+          .create("h3")
+          .addClass("card__title")
+          .text(album.title);
+        const albumCover = Html()
+          .create("figure")
+          .addClass("album-card__cover-image");
+        const coverImg = Html()
+          .create("img")
+          .addAttribute("src", album.imgUrl);
+        const artistName = Html()
+          .create("h4")
+          .addClass("album-card__artist-name")
+          .text(album.parentName);
+        const releaseDate = Html()
+          .create("h4")
+          .addClass("album-card__date")
+          .text(album.publishYear);
 
-				albumCover.addChild(coverImg);
-				albumCard.addChild(albumTitle);
-				albumCard.addChild(albumCover);
-				albumCard.addChild(artistName);
-				albumCard.addChild(releaseDate);
+        albumCover.addChild(coverImg);
+        albumCard.addChild(albumTitle);
+        albumCard.addChild(albumCover);
+        albumCard.addChild(artistName);
+        albumCard.addChild(releaseDate);
 
-				albumGallery.addChild(albumCard);
-			});
-		});
-		return albumGallery;
-	}
+        albumGallery.addChild(albumCard);
+      });
+    });
+    return albumGallery;
+  }
 }

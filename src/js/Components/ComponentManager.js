@@ -7,6 +7,10 @@ import AllAlbumsBlock from "../Components/ContentBlocks/AllAlbumsBlock";
 import SingleArtistBlock from "../Components/ContentBlocks/SingleArtistBlock";
 import SingleAlbumBlock from "../Components/ContentBlocks/SingleAlbumBlock";
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default class ComponentManager {
   constructor() {
     this.skeletonHasBeenRendered = false;
@@ -18,6 +22,10 @@ export default class ComponentManager {
       "singleArtistBlock",
       "singleAlbumBlock"
     ];
+  }
+
+  doStuff() {
+    console.log("Doing stuff!");
   }
 
   getAppContext() {
@@ -52,6 +60,8 @@ export default class ComponentManager {
       const unknownBlock = new UnknownBlock();
       unknownBlock.renderContent();
     }
+
+    // this.addEventsToContentBlockResources();
   }
 
   renderPageSkeleton() {
@@ -202,5 +212,24 @@ export default class ComponentManager {
 
     footer.addChild(footerContents);
     contentPane.addChild(footer);
+  }
+
+  addEventsToContentBlockResources() {
+    const resourceElements = document.getElementsByClassName("resource");
+    console.log(resourceElements);
+
+    // console.log("sleeping");
+    // await sleep(2000);
+    // console.log("waking");
+
+    // if (document.readyState === "complete") {
+    //   console.log("READY");
+    // }
+    // if (document.readyState !== "complete") {
+    //   console.log("NOT READY");
+    // }
+
+    // const length = resourceElements.length;
+    // console.log(length);
   }
 }
