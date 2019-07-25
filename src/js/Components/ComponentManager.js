@@ -17,7 +17,8 @@ export default class ComponentManager {
       "allArtistsBlock",
       "allAlbumsBlock",
       "singleArtistBlock",
-      "singleAlbumBlock"
+      "singleAlbumBlock",
+      "allSongsBlock"
     ];
   }
 
