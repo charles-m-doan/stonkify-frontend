@@ -6,6 +6,7 @@ import AllArtistsBlock from "../Components/ContentBlocks/AllArtistsBlock";
 import AllAlbumsBlock from "../Components/ContentBlocks/AllAlbumsBlock";
 import SingleArtistBlock from "../Components/ContentBlocks/SingleArtistBlock";
 import SingleAlbumBlock from "../Components/ContentBlocks/SingleAlbumBlock";
+import AllSongsBlock from "../Components/ContentBlocks/AllSongsBlock";
 
 export default class ComponentManager {
   constructor() {
@@ -47,6 +48,9 @@ export default class ComponentManager {
       block.renderContent();
     } else if (blockType == "singleAlbumBlock") {
       const block = new SingleAlbumBlock(requestedData);
+      block.renderContent();
+    } else if (blockType == "allSongsBlock") {
+      const block = new AllArtistsBlock(requestedData);
       block.renderContent();
     } else {
       const unknownBlock = new UnknownBlock();
@@ -156,6 +160,24 @@ export default class ComponentManager {
           event.preventDefault();
           // console.log("Albums clicked!");
           this.renderContentBlock("allAlbumsBlock", "");
+        })
+    );
+
+    //SONGS BUTTON
+    
+    const songsViewItem = Html()
+      .create("li")
+      .addClass("nav-list__item");
+      songsViewItem.addChild(
+      Html()
+        .create("a")
+        .addClass("nav-list__anchor")
+        .addAttribute("href", "AllSongsBlock")
+        .text("Songs")
+        .click(event => {
+          event.preventDefault();
+
+          this.renderContentBlock("allSongsBlock", "");
         })
     );
 
