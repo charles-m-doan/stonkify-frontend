@@ -1,20 +1,19 @@
-import CommonComponents from "./CommonComponents";
-import Html from "../Html/Html";
-import Api from "../Api/Api";
+import Html from "../../Html/Html";
+import Api from "../../Api/Api";
 
-export default function() {
-	return new ArtistsViewComponents();
-}
-
-class ArtistsViewComponents {
-	renderArtistsView() {
-		CommonComponents().createPageSkeleton();
-		this.renderMainContent();
+export default class AllArtistsBlock {
+	constructor() {
+		this.rootDataURL = Api().getRootURL() + "artists";
+		console.log(this.rootDataURL);
 	}
 
-	renderMainContent() {
-		const main = CommonComponents().getMainContentBlock();
+	renderContent(requestedData) {
+		const main = Html().select(".main");
+		const content = this.generateContent();
+		main.replace(content);
+	}
 
+	generateContent() {
 		const pageTitle = Html()
 			.create("h1")
 			.addClass("page-title")
@@ -24,7 +23,7 @@ class ArtistsViewComponents {
 			.create("section")
 			.addClass("card-gallery");
 
-		Api().getRequest(`http://localhost:8080/api/artists`, artistCollection => {
+		Api().getRequest(this.rootDataURL, artistCollection => {
 			artistCollection.forEach(artist => {
 				const card = Html()
 					.create("article")
@@ -51,7 +50,10 @@ class ArtistsViewComponents {
 			});
 		});
 
-		main.addChild(pageTitle);
-		main.addChild(cardGallery);
+		const content = Html()
+			.create("div")
+			.addChild(pageTitle)
+			.addChild(cardGallery);
+		return content;
 	}
 }

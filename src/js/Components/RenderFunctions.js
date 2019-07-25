@@ -1,12 +1,4 @@
-import CommonComponents from "./CommonComponents";
-import SkeletonViewComponents from "./SkeletonViewComponents";
-import SingleArtistViewComponents from "./SingleArtistViewComponents";
-import ArtistsViewComponents from "./ArtistsViewComponents";
-import SingleAlbumViewComponents from "./SingleAlbumViewComponents";
-import HomeViewComponents from "./HomeViewComponents";
-import AlbumsViewComponents from "./AlbumsViewComponents";
-import Html from "../Html/Html";
-import Api from "../Api/Api";
+// This script doesn't really do anything.  I was just practicing with exports and kept it around for reference. -Charles
 
 function renderPageSkeleton() {
 	console.log("Render Page Skeleton!");

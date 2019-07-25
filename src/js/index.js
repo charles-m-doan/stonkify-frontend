@@ -10,26 +10,28 @@
 // SingleAlbumViewComponents().renderSingleAlbumView();
 // HomeViewComponents().renderHomeView();
 // AlbumsViewComponents().renderAlbumsView();
+// import * as rendering from "./Components/RenderFunctions";
 
-import * as rendering from "./Components/RenderFunctions";
 import ComponentManager from "./Components/ComponentManager";
 
+const blockTypes = [
+	"unknownBlock",
+	"homeBlock",
+	"allArtistsBlock",
+	"allAlbumsBlock"
+];
+
 console.log("Starting App!");
-
-rendering.renderPageSkeleton();
-
-rendering.renderContentBlockHome();
-
-rendering.renderContentBlockAllArtists();
-
-rendering.renderContentBlockAllAlbums();
-
-rendering.renderContentBlockSingleArtist();
-
-rendering.renderContentBlockSingleAlbum();
-
 let componentManager = new ComponentManager();
+componentManager.renderContentBlock("homeBlock");
 
-componentManager.renderPageSkeleton();
-componentManager.renderPageSkeleton();
-componentManager.renderPageSkeleton();
+// componentManager.renderContentBlock("allArtistsBlock");
+
+// componentManager.renderContentBlock("allAlbumsBlock");
+
+// rendering.renderPageSkeleton();
+// rendering.renderContentBlockHome();
+// rendering.renderContentBlockAllArtists();
+// rendering.renderContentBlockAllAlbums();
+// rendering.renderContentBlockSingleArtist();
+// rendering.renderContentBlockSingleAlbum();
