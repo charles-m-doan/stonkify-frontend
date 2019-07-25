@@ -2,9 +2,13 @@ import Html from "../../Html/Html";
 import Api from "../../Api/Api";
 
 export default class AllAlbumsBlock {
-	constructor() {
+	constructor(requestedData) {
+		if (requestedData === undefined) {
+			requestedData = "";
+		}
 		this.rootDataURL = Api().getRootURL() + "albums";
-		console.log(this.rootDataURL);
+		this.resourceURL = this.rootDataURL + "/" + requestedData;
+		console.log(this.resourceURL);
 	}
 
 	renderContent(requestedData) {
@@ -32,7 +36,7 @@ export default class AllAlbumsBlock {
 			.create("section")
 			.addClass("card-gallery");
 
-		Api().getRequest(this.rootDataURL, albumCollection => {
+		Api().getRequest(this.resourceURL, albumCollection => {
 			albumCollection.forEach(album => {
 				const albumCard = Html()
 					.create("article")

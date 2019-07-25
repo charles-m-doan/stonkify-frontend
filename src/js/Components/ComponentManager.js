@@ -4,6 +4,8 @@ import UnknownBlock from "../Components/ContentBlocks/UnknownBlock";
 import HomeBlock from "../Components/ContentBlocks/HomeBlock";
 import AllArtistsBlock from "../Components/ContentBlocks/AllArtistsBlock";
 import AllAlbumsBlock from "../Components/ContentBlocks/AllAlbumsBlock";
+import SingleArtistBlock from "../Components/ContentBlocks/SingleArtistBlock";
+import SingleAlbumBlock from "../Components/ContentBlocks/SingleAlbumBlock";
 
 export default class ComponentManager {
 	constructor() {
@@ -12,7 +14,9 @@ export default class ComponentManager {
 			"unknownBlock",
 			"homeBlock",
 			"allArtistsBlock",
-			"allAlbumsBlock"
+			"allAlbumsBlock",
+			"singleArtistBlock",
+			"singleAlbumBlock"
 		];
 	}
 
@@ -27,21 +31,23 @@ export default class ComponentManager {
 		if (blockType === undefined) {
 			blockType = "homeBlock";
 		}
-		if (requestedData === undefined) {
-			requestedData = "/";
-		}
 
 		// Branch Based on Block Type
-
 		if (blockType == "homeBlock") {
-			const block = new HomeBlock();
-			block.renderContent(requestedData);
+			const block = new HomeBlock(requestedData);
+			block.renderContent();
 		} else if (blockType == "allArtistsBlock") {
-			const block = new AllArtistsBlock();
-			block.renderContent(requestedData);
+			const block = new AllArtistsBlock(requestedData);
+			block.renderContent();
 		} else if (blockType == "allAlbumsBlock") {
-			const block = new AllAlbumsBlock();
-			block.renderContent(requestedData);
+			const block = new AllAlbumsBlock(requestedData);
+			block.renderContent();
+		} else if (blockType == "singleArtistBlock") {
+			const block = new SingleArtistBlock(requestedData);
+			block.renderContent();
+		} else if (blockType == "singleAlbumBlock") {
+			const block = new SingleAlbumBlock(requestedData);
+			block.renderContent();
 		} else {
 			const unknownBlock = new UnknownBlock();
 			unknownBlock.renderContent();
@@ -113,7 +119,7 @@ export default class ComponentManager {
 				.click(event => {
 					event.preventDefault();
 					// console.log("Home clicked!");
-					this.renderContentBlock("homeBlock", "/");
+					this.renderContentBlock("homeBlock", "");
 				})
 		);
 
@@ -131,7 +137,7 @@ export default class ComponentManager {
 				.click(event => {
 					event.preventDefault();
 					// console.log("Artists clicked!");
-					this.renderContentBlock("allArtistsBlock", "/");
+					this.renderContentBlock("allArtistsBlock", "");
 				})
 		);
 
@@ -149,7 +155,7 @@ export default class ComponentManager {
 				.click(event => {
 					event.preventDefault();
 					// console.log("Albums clicked!");
-					this.renderContentBlock("allAlbumsBlock", "/");
+					this.renderContentBlock("allAlbumsBlock", "");
 				})
 		);
 
