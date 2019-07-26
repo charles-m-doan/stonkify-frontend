@@ -27,12 +27,10 @@ export default class SingleArtistBlock {
 			.create("h2")
 			.text(this.resourceURL);
 
-		//Actual Code --------------------------------- ------------
 		const avatarSection = this.generateArtistAvatar();
 		const artistNav = this.generateArtistNav();
 		const albumGallery = this.generateAlbumGallery();
 
-		// --------------------------------------------------------
 		const content = Html()
 			.create("div")
 			.addClass("container")
