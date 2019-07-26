@@ -23,7 +23,7 @@ export default class AllAlbumsBlock {
 			.addClass("page-title")
 			.text("Albums");
 		const albumGallery = this.generateAlbumGallery();
-
+		
 		const content = Html()
 			.create("div")
 			.addChild(pageTitle)
@@ -40,7 +40,14 @@ export default class AllAlbumsBlock {
 			albumCollection.forEach(album => {
 				const albumCard = Html()
 					.create("article")
-					.addClass("card");
+					.addClass("card")
+					.addClass("parent-entity")
+					.addAttribute("data-block-type", "singleAlbumBlock")
+					.addAttribute("data-id", `${album.id}`)
+					// albumCard.addAttribute("onClick", "myFunction()")
+				// albumCard.addEventListener("click", () =>{
+				// 	this.doSomething()
+				// })
 				const albumTitle = Html()
 					.create("h3")
 					.addClass("card__title")
@@ -71,4 +78,9 @@ export default class AllAlbumsBlock {
 		});
 		return albumGallery;
 	}
+	// doSomething(){
+	// 	console.log("something")
+	// }
 }
+
+

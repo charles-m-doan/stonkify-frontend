@@ -24,7 +24,22 @@ export default class ComponentManager {
     return Html().select("#app");
   }
 
+  addEventsToParentEntities(){
+    const parentEntities = Html().select(".parent-entity").element
+    console.log(parentEntities)
+
+    if(parentEntities.length > 0){
+      parentEntities.forEach((entity) =>{
+        console.log(entity)
+        entity.addEventListener("click", () =>{
+          this.renderContentBlock(entity.getAttribute("data-block-type"), entity.getAttribute("data-id"))
+        })
+      })
+    }
+  }
+
   renderContentBlock(blockType, requestedData) {
+    this.addEventsToParentEntities()
     if (this.skeletonHasBeenRendered == false) {
       this.renderPageSkeleton();
     }
@@ -63,6 +78,7 @@ export default class ComponentManager {
       this.renderEmptyContentPane();
       this.renderMain();
       this.renderFooter();
+      this.renderMainMeta();
 
       this.skeletonHasBeenRendered = true;
     } else {
@@ -202,5 +218,12 @@ export default class ComponentManager {
 
     footer.addChild(footerContents);
     contentPane.addChild(footer);
+  }
+  renderMainMeta(){
+    const pageHead = Html().select("head")
+    
+    const mainMeta = Html().create("meta").addClass("renderedBlock").addAttribute("name", "renderedBlock").addAttribute("content", "").addAttribute("scheme", "homeBlock")
+    pageHead.addChild(mainMeta)
+    console.log(document.querySelector(".renderedBlock"))
   }
 }

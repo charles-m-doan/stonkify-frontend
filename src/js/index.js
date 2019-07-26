@@ -14,3 +14,7 @@ let componentManager = new ComponentManager();
 componentManager.renderContentBlock("homeBlock", "");
 // componentManager.renderContentBlock("singleArtistBlock", "12");
 componentManager.renderContentBlock("singleAlbumBlock", "20");
+componentManager.renderContentBlock("singleAlbumBlock", "20");
+
+// const parentEntities = componentManager.getParentEntities()
+// console.log(parentEntities)
